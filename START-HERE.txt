@@ -1,0 +1,12 @@
+KIXO9 Aviator
+
+Requires Node.js 24 or newer. Run npm start in this folder.
+Site: http://localhost:3000/
+CMS: http://localhost:3000/admin
+
+Existing admin account, CMS content, assets, dependencies and visitor database are included.
+CMS > Popups > Claim CTA destination URL controls the offer link.
+CMS > Tracking accepts your GTM installation code or container ID. GTM is currently blank/disabled.
+The game shows a gold Claim Bonus button after a second-round win.
+
+See CMS.md for full documentation. Run npm ci if dependencies need reinstalling.

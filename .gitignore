@@ -1,0 +1,7 @@
+node_modules/
+data/activity.sqlite-wal
+data/activity.sqlite-shm
+.DS_Store
+*.log
+.vercel/
+.vercel

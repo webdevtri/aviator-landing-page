@@ -1,0 +1,219 @@
+/* KIXO9 brand guide v1.0: Bone, Ink, KIXO Blue; Saira Condensed display, Inter UI. */
+:root { --k9-accent:#225ef8; --k9-ink:#0e0f13; --k9-surface:#ffffff; --k9-muted:#606575; --text-secondary:#606575; --font-family:Inter,system-ui,sans-serif; }
+html,body { width:100%; height:100%; min-height:0; }
+body { background:#f8f8f8; color:var(--k9-ink); font-variant-numeric:tabular-nums; }
+button,a,input { -webkit-tap-highlight-color:transparent; }
+button { font-family:inherit; }
+button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var(--k9-accent); outline-offset:4px; }
+.app-container { width:100%; height:100dvh; min-height:0; padding:0 clamp(18px,3.5vw,64px); background:radial-gradient(ellipse at 75% 45%,#e8edfb 0,transparent 52%),#f8f8f8; }
+.top-nav { flex:0 0 84px; height:auto; padding:0; background:transparent; backdrop-filter:none; border-bottom:1px solid #0e0f1314; }
+.logo-section { gap:22px; }
+.k9-wordmark { display:flex; align-items:center; position:relative; color:#f5f6ec; font-size:31px; font-weight:900; font-style:italic; letter-spacing:-2px; text-decoration:none; }
+.k9-wordmark span { color:var(--k9-accent); }
+.k9-wordmark i { width:5px; height:5px; margin:20px 0 0 4px; background:var(--k9-accent); }
+.brand-divider { width:1px; height:24px; background:#0e0f1326; }
+.logo-section .brand-logo { height:26px; }
+.mode-badge { background:#0e0f1308; border:1px solid #0e0f1325; border-radius:30px; color:#606575; font-size:9px; letter-spacing:1.5px; padding:5px 9px; }
+.top-right-actions { gap:9px; }
+.balance-card { border-radius:7px; background:#0e0f1305; gap:9px; padding:9px 12px; }
+.balance-label { font-size:9px; letter-spacing:1px; color:var(--k9-muted); }
+.balance-card .balance-amount { color:#0e0f13; font-size:14px; }
+.balance-card .wallet-icon { display:none; }
+.icon-btn.help-btn { color:#0e0f13; border-color:#0e0f1325; }
+.experience { flex:1; min-height:0; display:grid; grid-template-columns:minmax(270px,.8fr) minmax(0,1.65fr); align-items:center; gap:clamp(24px,5vw,86px); }
+.promo-copy { padding-bottom:10px; }
+.promo-eyebrow { display:flex; align-items:center; gap:10px; color:var(--k9-accent); font-size:10px; font-weight:600; letter-spacing:2.2px; margin-bottom:24px; }
+.promo-eyebrow>span,.stage-heading i { width:6px; height:6px; border-radius:50%; background:var(--k9-accent); display:inline-block; }
+h1 { color:#0e0f13; font-size:clamp(40px,4.75vw,78px); font-weight:600; letter-spacing:-.055em; line-height:1.02; }
+h1 em { font-style:normal; color:var(--k9-accent); }
+.promo-description { color:var(--k9-muted); font-family:Inter,sans-serif; font-size:13px; line-height:1.8; max-width:320px; margin:23px 0 26px; }
+.promo-cta { display:flex; align-items:center; justify-content:space-between; gap:44px; border:0; border-radius:7px; padding:16px 21px; background:var(--k9-accent); color:#ffffff; font-size:14px; font-weight:700; cursor:pointer; transition:background .2s,transform .2s; }
+.promo-cta:hover { background:#1a45c7; transform:translateY(-2px); }
+.promo-cta>span { font-size:21px; line-height:18px; }
+.promo-details { background:none; border:0; color:#555b6d; margin-top:13px; font-size:11px; cursor:pointer; padding:5px 0; }
+.promo-details span { margin-left:10px; }
+.promo-note { display:flex; align-items:center; gap:13px; margin-top:clamp(20px,6vh,62px); }
+.note-mark { font-size:29px; color:var(--k9-accent); }
+.promo-note strong,.promo-note div>span { display:block; }
+.promo-note strong { font-size:11px; color:#0e0f13; font-weight:500; margin-bottom:5px; }
+.promo-note div>span { font-size:10px; color:var(--k9-muted); }
+.flight-experience { height:min(640px,100% - 52px); min-height:0; min-width:0; display:flex; flex-direction:column; position:relative; }
+.stage-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; flex:0 0 36px; font-size:10px; font-weight:600; letter-spacing:1.1px; color:#0e0f13; }
+.stage-heading i { margin-right:8px; }
+.stage-heading b { color:#606575; font-weight:400; }
+.stage-heading>span:last-child { font-size:8px; color:#606575; }
+.history-bar-container { flex:0 0 38px; height:auto; background:#f8f8f8d9; padding:0 14px; border:1px solid #0e0f1313; border-bottom:0; border-radius:14px 14px 0 0; overflow:hidden; gap:6px; }
+.history-pill { font-size:10px; padding:3px 8px; }
+.history-pill.medium { background:#225ef810; color:#1a45c7; border-color:#225ef825; }
+.game-viewport { min-height:0; width:100%; border-inline:1px solid #0e0f1313; background:#f8f8f8; }
+.center-hud { left:44%; top:43%; }
+.multiplier-display { font-size:clamp(45px,5.5vw,90px); }
+.live-winners-panel { top:12px; right:12px; width:160px; background:#ffffffbb; border:1px solid #0e0f1310; border-radius:9px; box-shadow:none; }
+.simulation-label { padding:10px 10px 0; color:#606575; font-size:8px; letter-spacing:1.2px; }
+.live-pool-header { padding:8px 10px; }
+.pool-total-value { font-size:13px; }
+.winners-feed { max-height:150px; overflow:hidden; }
+.active-players-badge { bottom:12px; right:12px; opacity:.7; font-size:9px; }
+.active-players-badge .avatar-stack { display:none; }
+.bottom-dock { flex-shrink:0; padding:13px; background:#ffffff; border:1px solid #0e0f1313; border-top-color:#0e0f130c; border-radius:0 0 14px 14px; backdrop-filter:none; }
+.bet-control-panel { max-width:none; gap:14px; }
+.stepper-and-chips { min-width:0; }
+.stepper-row { height:38px; background:#f8f8f8; }
+.quick-chips-row { gap:5px; }
+.quick-chip { background:#0e0f1305; padding:5px; font-size:10px; }
+.quick-chip.active { background:#225ef812; color:var(--k9-accent); border-color:#225ef866; }
+.bet-action-btn { min-width:0; flex:1; height:72px; border-radius:8px; box-shadow:none; }
+.bet-action-btn.state-start { background:var(--k9-accent); color:#ffffff; border-color:var(--k9-accent); box-shadow:none; }
+.bet-action-btn.state-start:hover { background:#1a45c7; box-shadow:0 4px 24px #225ef81c; }
+.bet-action-btn .btn-text { font-size:18px; }
+.bet-action-btn .btn-sub { font-size:14px; }
+.demo-caption { flex-shrink:0; padding:12px 0 0; color:#606575; font-size:9px; text-align:center; }
+.legal-footer { flex-shrink:0; min-height:74px; border-top:1px solid #0e0f1314; display:flex; align-items:center; flex-wrap:wrap; justify-content:space-between; column-gap:16px; padding:13px 0 10px; color:#606575; }
+.legal-summary { display:flex; align-items:center; gap:10px; font-size:10px; }
+.age-badge { display:inline-grid; place-items:center; width:29px; height:29px; border:1px solid #606575; border-radius:50%; font-size:11px; font-weight:700; color:#0e0f13; flex-shrink:0; }
+.legal-footer nav { display:flex; gap:17px; }
+.legal-footer nav button { padding:7px 0; border:0; background:none; color:#474c5d; font-size:10px; cursor:pointer; }
+.legal-footer nav button:hover,.promo-details:hover { color:var(--k9-accent); }
+.ad-disclosure { flex-basis:100%; text-align:center; font-size:9px; color:#606575; padding-top:5px; }
+.policy-dialog { position:fixed; inset:0; margin:auto; width:min(500px,calc(100% - 32px)); max-height:calc(100dvh - 24px); border:1px solid #d8e0f8; border-radius:16px; padding:26px; background:#ffffff; color:#0e0f13; box-shadow:0 30px 120px #0009; overflow:hidden; }
+.policy-dialog::backdrop { background:#0e0f13a8; backdrop-filter:blur(10px); }
+.policy-topline { display:flex; align-items:center; justify-content:space-between; color:var(--k9-accent); letter-spacing:1.5px; font-size:9px; }
+.policy-topline button { border:1px solid #0e0f1320; background:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:23px; cursor:pointer; }
+.policy-dialog h2 { font-size:28px; font-weight:500; letter-spacing:-.8px; margin:16px 0; }
+.policy-body { user-select:text; font-family:Inter,sans-serif; font-size:12px; line-height:1.75; color:#555b6d; }
+.policy-body p+p { margin-top:12px; }
+.policy-body strong { color:#0e0f13; font-weight:500; }
+.policy-body a { color:var(--k9-accent); }
+.policy-bottom { display:flex; align-items:center; justify-content:space-between; border-top:1px solid #0e0f1313; padding-top:16px; margin-top:22px; font-size:10px; color:#606575; }
+.policy-bottom button { background:var(--k9-accent); color:#ffffff; border:0; border-radius:6px; padding:11px 18px; cursor:pointer; font-weight:600; }
+.modal-overlay:not(.active) { visibility:hidden; }
+.bonus-modal-card,.help-card { background:#ffffff; border:1px solid #d8e0f8; box-shadow:0 25px 100px #0008; }
+.bonus-modal-card { max-width:440px; }
+.claim-cta-btn { background:var(--k9-accent); color:#ffffff; box-shadow:none; }
+.bonus-timer-bar { color:#555b6d; }
+.help-card { padding:22px; max-height:calc(100dvh - 24px); overflow:hidden; }
+.help-step { margin-bottom:12px; }
+.help-step p { font-size:12px; }
+@media(min-width:1600px) { .app-container { padding-inline:max(64px,calc((100vw - 1550px)/2)); } }
+@media(max-width:1100px) { .live-winners-panel { display:none; } .center-hud { left:50%; } .logo-section { gap:14px; } .balance-label { display:none; } .footer-detail { display:none; } .experience { gap:28px; grid-template-columns:minmax(245px,.8fr) minmax(0,1.4fr); } }
+@media(max-width:768px) {
+ .app-container { padding-inline:18px; }
+ .top-nav { flex-basis:64px; }
+ .k9-wordmark { font-size:24px; }.k9-wordmark i { margin-top:15px; }
+ .logo-section { gap:10px; }.logo-section .brand-logo { height:20px; }.brand-divider { height:18px; }.mode-badge { display:none; }
+ .top-right-actions { gap:6px; }.balance-card { display:none; }.currency-toggle-btn { font-size:10px; padding:6px; }.icon-btn { width:30px; height:30px; }
+ .experience { grid-template-columns:minmax(0,1fr); grid-template-rows:auto minmax(0,1fr); gap:14px; padding:18px 0 10px; }
+ .promo-copy { display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:12px; align-items:center; padding:0; }
+ .promo-eyebrow { grid-column:1/-1; font-size:8px; letter-spacing:1.5px; margin-bottom:9px; }
+ h1 { font-size:clamp(28px,6vw,43px); } h1 br { display:none; } h1 { max-width:370px; }
+ .promo-description,.promo-note,.promo-details { display:none; }
+ .promo-cta { padding:12px; font-size:11px; gap:12px; max-width:135px; line-height:1.35; }
+ .flight-experience { height:100%; }
+ .stage-heading { flex-basis:26px; font-size:8px; letter-spacing:.7px; }.stage-heading>span:last-child { font-size:7px; }
+ .history-bar-container { flex-basis:32px; padding-inline:9px; }
+ .history-pill { font-size:9px; padding:3px 7px; }
+ .bottom-dock { padding:10px; }.bet-control-panel { flex-direction:row; gap:10px; }.stepper-and-chips { flex:1; gap:6px; }
+ .bet-action-btn { width:auto; min-width:0; flex:1; height:66px; gap:5px; }.bet-action-btn .btn-text { font-size:15px; }.bet-action-btn .btn-sub { font-size:12px; }.bet-action-btn .btn-icon { display:none; }
+ .quick-chip { padding:4px 2px; font-size:9px; }.stepper-row { height:34px; }.stepper-btn { width:32px; }.bet-input-box input { font-size:15px; }
+ .demo-caption { font-size:8px; padding-top:8px; }.active-players-badge { display:none; }
+ .legal-footer { justify-content:center; gap:3px; min-height:92px; padding:8px 0 max(8px,env(safe-area-inset-bottom)); }
+ .legal-summary { font-size:9px; }.age-badge { width:23px; height:23px; font-size:9px; }.legal-footer nav { justify-content:center; width:100%; gap:15px; }.legal-footer nav button { font-size:9px; padding:6px 0; }.ad-disclosure { font-size:8px; padding-top:0; }
+ .win-banner { max-width:90%; }.win-title { font-size:14px; }.win-amount-text { font-size:24px; }
+}
+@media(max-height:700px) and (min-width:769px) { .top-nav { flex-basis:64px; }.promo-eyebrow { margin-bottom:15px; } h1 { font-size:48px; }.promo-description { margin:16px 0; }.promo-note { margin-top:20px; }.flight-experience { height:calc(100% - 24px); }.legal-footer { min-height:65px; } }
+@media(max-height:600px) and (max-width:768px) { .top-nav { flex-basis:48px; }.experience { padding-top:10px; gap:8px; }.promo-eyebrow { display:none; }h1 { font-size:27px; }.promo-cta { padding:8px 12px; }.legal-footer { min-height:80px; }.center-hud { top:42%; }.multiplier-display { font-size:40px; }.flew-away-label { font-size:14px; } }
+@media(max-height:480px) and (min-width:600px) { .top-nav { flex-basis:46px; }.experience { display:grid; grid-template-columns: .8fr 1.6fr; grid-template-rows:minmax(0,1fr); padding:8px 0; gap:20px; }.promo-copy { display:block; }h1 { font-size:33px; }.promo-eyebrow,.promo-description,.promo-note,.promo-details { display:none; }.promo-cta { margin-top:18px; }.flight-experience { height:100%; }.stage-heading { flex-basis:22px; }.history-bar-container { flex-basis:28px; }.bottom-dock { padding:7px; }.bet-action-btn { height:52px; }.stepper-row { height:28px; }.quick-chips-row { display:none; }.legal-footer { min-height:53px; padding:5px 0; }.legal-footer nav { width:auto; }.demo-caption { padding-top:5px; font-size:8px; }.multiplier-display { font-size:42px; }.flew-away-label { font-size:13px; }.active-players-badge { display:none; } }
+@media(max-height:530px) { .policy-dialog { padding:16px 22px; }.policy-dialog h2 { margin:8px 0; font-size:23px; }.policy-body { font-size:11px; line-height:1.5; }.policy-body p+p { margin-top:8px; }.policy-bottom { margin-top:12px; padding-top:10px; }.modal-plane-header { display:none; }.bonus-modal-card { padding:20px; }.bonus-modal-card h2 { font-size:24px; }.help-step { margin-bottom:6px; }.help-step p { font-size:10px; }.help-card { padding:14px; }.help-header { margin-bottom:8px; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } }
+/* Brand-specific typography and the single diagonal campaign accent. */
+@font-face { font-family:InterLocal; src:url('../assets/inter-regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+:root { --font-family:Inter,InterLocal,system-ui,sans-serif; }
+.k9-wordmark { padding:12px 0; }.k9-wordmark img { display:block; width:140px; height:auto; }
+.logo-section { gap:24px; }
+.promo-copy { min-width:0; }
+.tour-overlay:not(.active) { visibility:hidden; }
+h1 { font-family:'Saira Condensed','Arial Narrow',Impact,sans-serif; font-style:normal; transform:skewX(-8deg); transform-origin:left bottom; margin-left:5px; font-weight:900; font-size:clamp(90px,10vw,156px); line-height:.82; letter-spacing:-.025em; }
+h1 em { display:block; font-style:inherit; font-size:clamp(27px,3.05vw,47px); line-height:1; letter-spacing:-.015em; margin-top:14px; white-space:nowrap; }
+h1 br { display:none; }
+.promo-eyebrow { color:#1a45c7; }.promo-eyebrow>span { border-radius:0; width:18px; height:4px; transform:skewX(-10deg); }
+.promo-cta { text-decoration:none; background:#33c85d; color:#0e0f13; width:fit-content; font-weight:700; border-radius:6px; }
+.promo-cta:hover { background:#2db453; }
+.promo-details { color:#474c5d; font-size:11px; }
+.experience { position:relative; }
+.experience::after { content:''; position:absolute; left:0; right:0; bottom:0; height:3px; background:linear-gradient(100deg,#225ef8 0 22%,#d8e0f8 22% 100%); }
+.promo-note { margin-top:32px; }
+.currency-toggle-btn,.icon-btn { color:#0e0f13; border-color:#d9dce5; background:#fff; }
+.currency-toggle-btn:hover,.icon-btn:hover { background:#e8edfb; }.icon-btn.muted { color:#606575; }
+.stage-heading { border-bottom:0; }
+.history-pill.low { color:#1a45c7; background:#225ef810; border-color:#225ef825; }
+.history-pill.high { color:#aa1642; background:#e5053910; border-color:#e5053925; }
+.multiplier-display { color:#0e0f13; text-shadow:none; font-weight:700; }
+.multiplier-display.flying,.multiplier-display.purple-tier,.multiplier-display.gold-tier,.multiplier-display.won { color:#225ef8; text-shadow:none; }
+.flew-away-label { color:#bb1540; text-shadow:none; }
+.stepper-row { border-color:#d8dbe3; }.stepper-btn { color:#0e0f13; background:#e8e8e8; }.stepper-btn:hover { background:#d8e0f8; }
+.bet-input-box input { color:#0e0f13; }.quick-chip { color:#474c5d; border-color:#e2e4eb; }.quick-chip:hover { background:#e8edfb; }.quick-chip.active { color:#1a45c7; }
+.bet-action-btn .btn-text { font-family:Inter,system-ui,sans-serif; font-weight:700; font-size:16px; }.bet-action-btn .btn-sub { opacity:1; }
+.pool-total-value { color:#0e0f13; }.winners-feed { opacity:.9; }.winner-name { color:#0e0f13; }
+.policy-topline button { color:#0e0f13; }.policy-dialog { border-radius:12px; }.policy-dialog h2 { font-family:'Saira Condensed',Impact,sans-serif; font-style:oblique 9deg; font-weight:900; font-size:34px; text-transform:uppercase; }
+.help-card,.bonus-modal-card { color:#0e0f13; border-radius:12px; }.help-step strong,.help-header h3,.help-step p { color:#474c5d; }.help-step .step-num { color:#1a45c7; background:#d8e0f8; }
+.close-btn,.close-bonus-btn { color:#0e0f13; }.bonus-congrats-title { color:#0e0f13; text-shadow:none; }.highlight-gold { color:#225ef8; }.trust-item { color:#474c5d; }.trust-item svg { color:#225ef8; }.bonus-credits-sub { color:#606575; }
+@media(max-width:1100px) { .k9-wordmark img { width:120px; }.logo-section { gap:20px; } }
+@media(max-width:768px) { .k9-wordmark img { width:96px; }.logo-section { gap:14px; }.promo-copy { grid-template-columns:minmax(0,1fr) auto; row-gap:0; }.promo-eyebrow { margin-bottom:8px; }h1 { font-size:clamp(56px,11vw,80px); }h1 em { font-size:clamp(20px,4vw,28px); margin-top:5px; }.promo-details { display:block; grid-column:1/-1; width:fit-content; margin-top:8px; padding:0; font-size:9px; }.promo-cta { max-width:133px; }.promo-note { display:none; } }
+@media(max-height:700px) and (min-width:769px) { h1 { font-size:105px; }h1 em { font-size:32px; } }
+@media(max-height:600px) and (max-width:768px) { h1 { font-size:46px; }h1 em { font-size:19px; }.promo-details { margin-top:5px; } }
+@media(max-height:480px) and (min-width:600px) { h1 { font-size:65px; }h1 em { font-size:24px; }.promo-details { display:block; font-size:9px; margin-top:8px; }.promo-cta { margin-top:16px; }.promo-note { display:none; } }
+.policy-pagination { display:flex; align-items:center; justify-content:center; gap:18px; margin-top:16px; font-size:11px; color:#555b6d; }
+.policy-pagination[hidden] { display:none; }
+.policy-pagination button { width:32px; height:32px; border:1px solid #d8e0f8; border-radius:6px; background:#f8f8f8; color:#225ef8; cursor:pointer; }
+.policy-pagination button:disabled { color:#9297a5; cursor:default; background:#e8e8e8; }
+.live-winners-panel { width:190px; }.winner-avatar { width:20px; height:20px; flex-shrink:0; }.winner-info { min-width:0; margin-left:6px; }.winner-name { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:9px; }.winner-mult { color:#1a45c7; font-size:9px; }.winner-amount { color:#0e0f13; font-size:10px; flex-shrink:0; margin-left:4px; }
+.active-players-badge { background:#ffffffcc; color:#474c5d; border:1px solid #d8dbe3; opacity:1; }
+.bet-input-box { min-width:0; }.bet-input-box input { width:100%; min-width:0; }
+.takeoff-title { transform:none; margin-left:0; max-width:none; }
+.takeoff-title .pilot-greeting { display:block; font-family:Inter,InterLocal,system-ui,sans-serif; font-size:clamp(32px,3.2vw,50px); font-weight:600; line-height:1.25; letter-spacing:-.04em; }
+.takeoff-title em { font-size:clamp(48px,4.8vw,74px); line-height:1.02; margin-top:18px; white-space:normal; transform:skewX(-8deg); transform-origin:left bottom; }
+.takeoff-subtitle { margin-top:22px; font-size:15px; line-height:1.6; color:var(--k9-muted); }
+.takeoff-emoji { display:inline-block; font-size:.72em; transform:skewX(8deg); }
+.legal-footer { min-height:58px; padding-block:12px; }
+@media(max-width:768px) { .promo-copy { display:block; }.takeoff-title .pilot-greeting { font-size:28px; }.takeoff-title em { font-size:38px; margin-top:8px; }.takeoff-subtitle { margin-top:10px; font-size:12px; }.legal-footer { min-height:68px; padding-block:8px; } }
+@media(max-height:600px) and (max-width:768px) { .takeoff-title .pilot-greeting { font-size:25px; }.takeoff-title em { font-size:34px; }.takeoff-subtitle { margin-top:7px; }.legal-footer { min-height:66px; } }
+@media(max-height:480px) and (min-width:600px) { .takeoff-title .pilot-greeting { font-size:28px; }.takeoff-title em { font-size:40px; }.takeoff-subtitle { margin-top:12px; font-size:12px; }.legal-footer { min-height:46px; padding-block:6px; } }
+@media(max-width:380px) { .logo-section { gap:9px; }.logo-section .brand-logo { height:16px; }.top-right-actions { gap:4px; }.icon-btn { width:26px; height:28px; }.currency-toggle-btn { width:33px; padding:5px 1px; font-size:9px; }.bet-action-btn .btn-text { font-size:12px; }.bet-action-btn .btn-sub { font-size:10px; }.bet-action-btn { gap:3px; }.stepper-btn { width:24px; flex-shrink:0; }.quick-chips-row { gap:3px; }.quick-chip { min-width:0; padding:4px 1px; font-size:8px; }.legal-footer nav { gap:10px; }.legal-footer nav button { font-size:8px; white-space:nowrap; }.policy-dialog h2 { font-size:28px; } }
+/* Matching raccoon commander and in-game pilot. */
+.promo-copy { display:flex; flex-direction:column; justify-content:center; gap:8px; min-height:0; max-height:100%; padding:18px 0; }
+.pilot-character { flex:0 1 280px; min-height:0; height:clamp(170px,30vh,280px); width:min(100%,290px); align-self:flex-start; position:relative; perspective:700px; }
+.pilot-character::after { content:''; position:absolute; z-index:0; bottom:0; left:18%; right:18%; height:16px; background:radial-gradient(ellipse,#225ef824,transparent 70%); filter:blur(4px); }
+.pilot-character-image { position:relative; z-index:1; width:100%; height:100%; object-fit:contain; object-position:left bottom; transform-origin:50% 85%; animation:pilot-ready 4.6s ease-in-out infinite; filter:drop-shadow(0 10px 10px #10265714); }
+.pilot-copy-text { flex-shrink:0; min-width:0; }
+.app-container[data-flight-state="FLYING"] .pilot-character-image { animation:pilot-approve 1.3s ease-in-out infinite; }
+.app-container[data-flight-state="WON"] .pilot-character-image { animation:pilot-celebrate 1.8s ease-in-out infinite; }
+.app-container[data-flight-state="FLYING"] .live-winners-panel,
+.app-container[data-flight-state="WON"] .live-winners-panel { opacity:0; pointer-events:none; }
+.live-winners-panel { transition:opacity .3s ease; }
+.app-container[data-flight-state="FLYING"] .center-hud { top:27%; }
+@keyframes pilot-ready { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-7px) rotate(1deg); } }
+@keyframes pilot-approve { 0%,100% { transform:translateY(0) rotate(-1deg) rotateY(-3deg); } 50% { transform:translateY(-5px) rotate(2deg) rotateY(3deg); } }
+@keyframes pilot-celebrate { 0%,100% { transform:translateY(0) rotate(-2deg); } 45% { transform:translateY(-10px) rotate(3deg); } }
+@media(min-width:769px) and (max-height:720px) { .pilot-character { flex-basis:190px; height:190px; }.promo-copy { gap:10px; }.takeoff-title .pilot-greeting { font-size:32px; }.takeoff-title em { font-size:48px; margin-top:12px; }.takeoff-subtitle { margin-top:12px; } }
+@media(max-width:768px) { .promo-copy { display:grid; grid-template-columns:minmax(0,1fr) 100px; align-items:center; gap:12px; padding:0; }.pilot-character { grid-column:2; grid-row:1; width:100%; height:140px; }.pilot-copy-text { grid-column:1; grid-row:1; }.takeoff-title .pilot-greeting { font-size:25px; }.takeoff-title em { font-size:34px; }.takeoff-subtitle { font-size:11px; } }
+@media(max-width:380px) { .promo-copy { grid-template-columns:minmax(0,1fr) 82px; gap:8px; }.pilot-character { height:120px; }.takeoff-title .pilot-greeting { font-size:22px; }.takeoff-title em { font-size:30px; }.takeoff-subtitle { font-size:10px; } }
+@media(max-height:480px) and (min-width:600px) { .promo-copy { display:flex; position:relative; gap:0; padding:0; }.pilot-character { position:absolute; right:0; top:-55px; width:80px; height:100px; }.takeoff-title .pilot-greeting { font-size:25px; }.takeoff-title em { font-size:38px; }.takeoff-subtitle { font-size:11px; } }
+@media(prefers-reduced-motion:reduce) { .pilot-character-image { animation:none!important; transform:none; } }
+.legal-footer nav .contact-email { align-self:center; padding:7px 0; color:#474c5d; font-size:10px; text-decoration:none; white-space:nowrap; }
+.legal-footer nav .contact-email:hover { color:var(--k9-accent); }
+.flight-toast { position:absolute; z-index:12; left:50%; bottom:36px; transform:translateX(-50%); width:max-content; max-width:calc(100% - 28px); padding:13px 20px; background:#fff; border:1px solid #d8e0f8; border-left:4px solid #225ef8; border-radius:12px; box-shadow:0 8px 30px #15255320; text-align:center; pointer-events:none; animation:flightToastIn .2s ease-out; }
+.flight-toast[hidden] { display:none; }
+.flight-toast strong,.flight-toast span { display:block; color:#0e0f13; font-size:16px; line-height:1.4; }
+.flight-toast span { font-size:13px; color:#474c5d; margin-top:3px; }
+.flight-toast span:empty { display:none; }
+@keyframes flightToastIn { from { opacity:0; translate:0 6px; } to { opacity:1; translate:0 0; } }
+#bonusModal .bonus-modal-card { max-width:360px; padding:30px 24px 20px; }
+#bonusModal .bonus-congrats-title { font-size:28px; margin:8px 0; }
+#bonusModal .bonus-credits-sub { margin-bottom:18px; font-size:16px; }
+.welcome-bonus { color:#225ef8; font-weight:800; font-size:18px; margin:0 0 18px; }
+#bonusModal .claim-cta-btn { height:48px; font-size:15px; background:#33c85d; color:#0e0f13; }
+#bonusModal .bonus-timer-bar { background:transparent; border:0; font-size:9px; line-height:1.5; margin-top:12px; padding:0; }
+@media(max-width:380px) { .flight-toast { padding:10px 12px; }.flight-toast strong { font-size:14px; }.flight-toast span { font-size:11px; } }
+@media(prefers-reduced-motion:reduce) { .flight-toast { animation:none; } }
+@media(max-width:768px) { .legal-footer nav .contact-email { font-size:9px; padding:6px 0; } }
+@media(max-width:380px) { .legal-footer nav { gap:8px; }.legal-footer nav .contact-email { font-size:8px; } }

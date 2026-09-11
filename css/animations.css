@@ -1,0 +1,157 @@
+/* =========================================================
+   AVIATOR KEYFRAME ANIMATIONS & GLOW EFFECTS
+   ========================================================= */
+
+@keyframes pulseDot {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pillEnter {
+  0% {
+    transform: scale(0.6) translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideWinner {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shakeMultiplier {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+@keyframes bounceWin {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(229, 5, 57, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(229, 5, 57, 0.9), inset 0 0 15px rgba(255, 255, 255, 0.4);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(229, 5, 57, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    transform: scale(1);
+  }
+}
+
+@keyframes cashoutGlow {
+  0% {
+    box-shadow: 0 4px 20px rgba(234, 179, 8, 0.5), 0 0 15px rgba(245, 158, 11, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 32px rgba(234, 179, 8, 0.85), 0 0 25px rgba(245, 158, 11, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 4px 20px rgba(234, 179, 8, 0.5), 0 0 15px rgba(245, 158, 11, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+    transform: scale(1);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 1.2s infinite ease-in-out;
+}
+
+@keyframes spinPropeller {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes cosmicShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #fff 0%, #ffc700 50%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: cosmicShimmer 3s linear infinite;
+}
+
+@keyframes ringPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pointerTap {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -42%) scale(0.9);
+  }
+}
+
+@keyframes rippleWave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes planeFloat {
+  0% {
+    transform: translateX(-50%) translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-6px) rotate(-2deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes emergencyPulse {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 0, 51, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    transform: scale(1);
+    background: linear-gradient(135deg, #e50539, #990022);
+  }
+  100% {
+    box-shadow: 0 0 45px rgba(255, 0, 51, 1), inset 0 0 20px rgba(255, 255, 255, 0.5);
+    transform: scale(1.03);
+    background: linear-gradient(135deg, #ff0033, #e50539);
+  }
+}
+
+

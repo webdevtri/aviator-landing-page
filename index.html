@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>KIXO9 × Aviator — Take Flight</title>
+  <meta name="description" content="Discover the KIXO9 Aviator experience. Try two simulated flights with virtual credits. Adults only. No real-money prizes in this demo.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/kixo9-favicon.webp" type="image/webp">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/kixo9.css">
+  <link rel="stylesheet" href="css/cms-theme.css">
+  <script src="js/cms-schema.js"></script>
+  <script src="/api/cms/bootstrap.js"></script>
+  <script src="js/gtm-config.js"></script>
+  <script src="js/tracking.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="logo-section">
+        <a href="./" class="k9-wordmark" aria-label="KIXO9 home"><img src="assets/kixo9-logo.webp" alt="KIXO9"></a>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <img src="assets/aviator-logo.svg" alt="Aviator Logo" class="brand-logo" onerror="this.onerror=null; this.src='aviator-logo';">
+      </div>
+
+      <div class="top-right-actions">
+        <!-- Currency Switcher -->
+        <button id="currencyToggleBtn" class="currency-toggle-btn" title="Switch Currency">INR (₹)</button>
+        
+        <!-- Balance Display -->
+        <div class="balance-card">
+          <span class="balance-label">CREDITS</span>
+          <svg class="wallet-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+          </svg>
+          <span id="userBalance" class="balance-amount">₹1,042</span>
+        </div>
+
+        <!-- Sound Toggle Button -->
+        <button id="soundToggleBtn" class="icon-btn" title="Toggle Sound">
+          <span id="soundIcon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Help / Rules Button -->
+        <button id="helpBtn" class="icon-btn help-btn" title="Game Rules & Info">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="experience">
+    <div class="promo-copy">
+      <div class="pilot-copy-text">
+      <h1 class="takeoff-title"><span class="pilot-greeting">Ahoy, Pilot! 👀</span><em>READY FOR TAKEOFF? <span class="takeoff-emoji">🚀</span></em></h1>
+      <p class="takeoff-subtitle">Make your choice, and take off!</p>
+      </div>
+      <div class="pilot-character"><img class="pilot-character-image" src="assets/raccoon-thumbs-up.png" alt="Raccoon pilot in a blue flight jacket giving a thumbs up for takeoff" width="1122" height="1402" decoding="async"></div>
+    </div>
+    <div class="flight-experience">
+    <!-- Multipliers History Bar -->
+    <div class="history-bar-container" id="historyBar">
+      <span class="history-pill high">8.14x</span>
+      <span class="history-pill low">1.19x</span>
+      <span class="history-pill medium">2.05x</span>
+      <span class="history-pill low">1.00x</span>
+      <span class="history-pill high">6.10x</span>
+      <span class="history-pill medium">4.74x</span>
+      <span class="history-pill low">1.10x</span>
+      <span class="history-more">•••</span>
+    </div>
+
+    <!-- Main Game Viewport -->
+    <main class="game-viewport">
+      <!-- 60FPS Flight Canvas -->
+      <canvas id="flightCanvas" role="img" aria-label="Cartoon raccoon piloting a red plane with a spinning propeller"></canvas>
+
+      <div id="flightToast" class="flight-toast" role="status" aria-live="polite" aria-atomic="true" hidden><strong id="flightToastTitle"></strong><span id="flightToastBody"></span></div>
+
+      <!-- Center Multiplier Display HUD -->
+      <div class="center-hud">
+        <div id="flewAwayLabel" class="flew-away-label">FLEW AWAY!</div>
+        <div id="multiplierDisplay" class="multiplier-display">
+          <span id="multiplierValue">1.00x</span>
+        </div>
+      </div>
+
+      <!-- Mega Win Celebration Banner -->
+      <div id="winBanner" class="win-banner">
+        <div class="win-title">DEMO CASH OUT</div>
+        <div id="winAmountText" class="win-amount-text">WON ₹50,000!</div>
+      </div>
+
+      <!-- Live Winners Panel (Top Right Floating) -->
+      <aside class="live-winners-panel">
+        <div class="live-pool-header">
+          <div class="pool-indicator">
+            <div class="live-dot"></div>
+            <svg class="download-arrow" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+            </svg>
+            <span id="livePoolCounter" class="pool-total-value">₹4,13,04,886</span>
+          </div>
+        </div>
+        <div id="liveWinnersFeed" class="winners-feed">
+          <!-- Dynamically populated rows -->
+        </div>
+      </aside>
+
+      <!-- Active Players Count Badge (Bottom Right) -->
+      <div class="active-players-badge">
+        <div class="avatar-stack">
+          <img class="mini-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2334b4ff'><circle cx='12' cy='12' r='10'/></svg>" alt="avatar">
+          <img class="mini-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23913ef8'><circle cx='12' cy='12' r='10'/></svg>" alt="avatar">
+          <img class="mini-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e50539'><circle cx='12' cy='12' r='10'/></svg>" alt="avatar">
+        </div>
+        <span id="activePlayersCount">194</span><span>players online</span>
+      </div>
+    </main>
+
+    <!-- Bottom Betting Control Dock -->
+    <div class="bottom-dock">
+      <div class="bet-control-panel">
+        <div class="stepper-and-chips">
+          <!-- Stepper Input -->
+          <div class="stepper-row" id="stepperRow">
+            <button id="btnMinus" class="stepper-btn" aria-label="Decrease Bet">−</button>
+            <div class="bet-input-box">
+              <input type="number" id="betAmountInput" value="100" min="1" step="1" aria-label="Virtual stake amount">
+            </div>
+            <button id="btnPlus" class="stepper-btn" aria-label="Increase Bet">+</button>
+          </div>
+          <!-- Quick Bet Chips -->
+          <div class="quick-chips-row">
+            <button class="quick-chip active" data-val="100">₹100</button>
+            <button class="quick-chip" data-val="200">₹200</button>
+            <button class="quick-chip" data-val="500">₹500</button>
+            <button class="quick-chip" data-val="1000">₹1,000</button>
+          </div>
+        </div>
+
+        <!-- Primary Action / State Button -->
+        <button id="mainBetBtn" class="bet-action-btn state-start" aria-label="Take Off">
+          <div id="betBtnProgressBar" class="btn-progress-bar"></div>
+          <span id="betBtnIcon" class="btn-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span id="betBtnText" class="btn-text">Take Off</span>
+          <span id="betBtnSub" class="btn-sub">· ₹100</span>
+        </button>
+      </div>
+    </div>
+    </div>
+    </div>
+    <footer class="legal-footer">
+      <div class="legal-summary"><span class="age-badge">18+</span><span>Adults only. Play responsibly. <span class="footer-detail">Virtual credits have no cash value.</span></span></div>
+      <nav aria-label="Legal information">
+        <button data-policy="privacy">Privacy</button><button data-policy="terms">Terms</button><button data-policy="responsible">Responsible play</button><button data-policy="cookies">Cookies</button><a class="contact-email" href="mailto:contact@kixo9.com">contact@kixo9.com</a>
+      </nav>
+    </footer>
+
+    <dialog id="policyDialog" class="policy-dialog" aria-labelledby="policyTitle">
+      <div class="policy-topline"><span>KIXO9 / INFORMATION</span><button id="closePolicyBtn" aria-label="Close information">×</button></div>
+      <h2 id="policyTitle"></h2>
+      <div id="policyBody" class="policy-body"></div>
+      <div id="policyPagination" class="policy-pagination" hidden><button id="policyPrevBtn" aria-label="Previous policy page">←</button><span id="policyPageCount" aria-live="polite"></span><button id="policyNextBtn" aria-label="Next policy page">→</button></div>
+      <div class="policy-bottom"><span>18+ · Play responsibly</span><button id="policyDoneBtn">Got it <span aria-hidden="true">↗</span></button></div>
+    </dialog>
+
+    <!-- Claiming Dialogue Box -->
+    <div id="bonusModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="congratsTitle">
+      <div class="bonus-modal-card">
+        <!-- Close Cross Icon Button -->
+        <button id="closeBonusBtn" class="close-bonus-btn" aria-label="Close Bonus Modal" title="Close">&times;</button>
+
+        <h2 id="congratsTitle" class="bonus-congrats-title">YOU COOKED. 🔥</h2>
+        <div id="congratsCredits" class="bonus-credits-sub">Pilot, you’re in. 🫡</div>
+        <p class="welcome-bonus">🎁 500% WELCOME BONUS</p>
+        <button id="bonusClaimBtn" class="claim-cta-btn">YOURS. CLAIM IT</button>
+        <div class="bonus-timer-bar">18+ · Offer terms apply · Virtual winnings have no cash value</div>
+      </div>
+    </div>
+
+    <!-- Help / Rules Modal -->
+    <div id="helpModal" class="modal-overlay">
+      <div class="help-card">
+        <div class="help-header">
+          <h3>How to Play Aviator</h3>
+          <button id="closeHelpBtn" class="close-btn">&times;</button>
+        </div>
+        <div class="help-content">
+          <div class="help-step">
+            <span class="step-num">1</span>
+            <div>
+              <strong>Set your stake</strong>
+              <p>Use the − / + buttons or quick chips (₹100, ₹200...) to choose your bet amount for the round.</p>
+            </div>
+          </div>
+          <div class="help-step">
+            <span class="step-num">2</span>
+            <div>
+              <strong>Launch the round</strong>
+              <p>Tap "Take Off" to start a simulated round with your virtual stake.</p>
+            </div>
+          </div>
+          <div class="help-step">
+            <span class="step-num">3</span>
+            <div>
+              <strong>Watch it climb</strong>
+              <p>The multiplier starts at 1.00x and climbs higher into the stratosphere as the flight progresses.</p>
+            </div>
+          </div>
+          <div class="help-step">
+            <span class="step-num">4</span>
+            <div>
+              <strong>Cash out in time</strong>
+              <p>Tap the cash-out button before the plane flies away to secure your win. If it flies away first, the round is lost.</p>
+            </div>
+          </div>
+          <div class="help-step">
+            <span class="step-num">5</span>
+            <div>
+              <strong>Practice with virtual credits</strong>
+              <p>The activity feed and both flights are simulated. Credits cannot be withdrawn, and demo results do not predict real-money outcomes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="help-footer" style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);">
+          <button id="replayTourBtn" class="replay-tour-btn">
+            🎬 Play Interactive Tour
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Video-Style Auto Tour System -->
+    <div id="tourOverlay" class="tour-overlay">
+      <!-- Spotlight Bounding Box -->
+      <div id="tourSpotlight" class="tour-spotlight">
+        <div class="spotlight-pulse-ring"></div>
+      </div>
+
+      <!-- Tour Step Tooltip Card -->
+      <div id="tourTooltip" class="tour-tooltip-card">
+        <!-- Progress Bar at top -->
+        <div class="tour-progress-track">
+          <div id="tourProgressBar" class="tour-progress-bar"></div>
+        </div>
+
+        <div class="tour-card-header">
+          <div class="tour-header-left">
+            <span id="tourStepIcon" class="tour-step-icon"></span>
+            <span id="tourStepBadge" class="tour-step-badge">STEP 1 / 5</span>
+          </div>
+          <button id="closeTourBtn" class="tour-close-btn" aria-label="Skip Tour">&times;</button>
+        </div>
+
+        <div class="tour-card-body">
+          <h4 id="tourTitle" class="tour-title">Set your stake</h4>
+          <p id="tourDesc" class="tour-desc">Tap − or + to choose how much rides on the round.</p>
+        </div>
+
+        <div class="tour-card-footer">
+          <div id="tourDots" class="tour-dots">
+            <!-- 5 dots -->
+          </div>
+          <button id="tourActionBtn" class="tour-action-btn">Next →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/cms-client.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/winners.js"></script>
+  <script src="js/flight-rules.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/tour.js"></script>
+  <script src="js/flight-messages.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/kixo9.js"></script>
+</body>
+</html>
