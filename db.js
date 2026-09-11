@@ -1,8 +1,24 @@
 const fs = require('fs');
 const path = require('path');
+const { createClient } = require('@supabase/supabase-js');
 
 const isVercel = process.env.VERCEL === '1' || process.env.NOW_REGION;
 const DB_PATH = isVercel ? path.join('/tmp', 'db.json') : path.join(__dirname, 'data', 'db.json');
+
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_KEY || process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+let supabase = null;
+if (SUPABASE_URL && SUPABASE_KEY) {
+  try {
+    supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
+      auth: { persistSession: false }
+    });
+    console.log('[DB] Supabase client initialized for', SUPABASE_URL);
+  } catch (e) {
+    console.error('[DB] Failed to initialize Supabase client:', e.message);
+  }
+}
 
 // Default initial state
 const defaultState = {
@@ -40,7 +56,7 @@ function readDb() {
     const raw = fs.readFileSync(DB_PATH, 'utf-8');
     return JSON.parse(raw);
   } catch (err) {
-    console.error('Error reading db:', err);
+    console.error('Error reading local db:', err);
     return defaultState;
   }
 }
@@ -53,7 +69,7 @@ function writeDb(data) {
     }
     fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2), 'utf-8');
   } catch (err) {
-    console.error('Error writing db:', err);
+    console.error('Error writing local db:', err);
   }
 }
 
@@ -61,10 +77,17 @@ function writeDb(data) {
 const db = {
   init() {
     readDb();
-    console.log('[DB] Persistent database initialized at', DB_PATH);
+    if (supabase) {
+      console.log('[DB] Cloud database ready (Supabase active).');
+    } else {
+      console.log('[DB] Local JSON database initialized at', DB_PATH);
+    }
   },
 
-  recordSession(sessionData) {
+  readDb,
+  writeDb,
+
+  async recordSession(sessionData) {
     const data = readDb();
     const session = {
       id: 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
@@ -74,10 +97,30 @@ const db = {
     data.sessions.push(session);
     data.stats.totalFlights += 1;
     writeDb(data);
+
+    if (supabase) {
+      try {
+        const { error } = await supabase.from('sessions').insert([{
+          id: session.id,
+          session_token: session.sessionToken || session.id,
+          attempt_number: session.attemptNumber || 1,
+          duration: session.duration || 0,
+          multiplier: session.multiplier || 1,
+          outcome: session.outcome || 'UNKNOWN',
+          bet_amount: session.betAmount || 100,
+          currency: session.currency || 'INR',
+          timestamp: session.timestamp
+        }]);
+        if (error) console.warn('[DB] Supabase insert session warning:', error.message);
+      } catch (err) {
+        console.warn('[DB] Supabase insert session error:', err.message);
+      }
+    }
+
     return session;
   },
 
-  recordClaim(claimData) {
+  async recordClaim(claimData) {
     const data = readDb();
     const claim = {
       id: 'clm_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
@@ -90,35 +133,124 @@ const db = {
     data.claims.push(claim);
     data.stats.totalBonusClaimed += Number(claimData.amount || 50000);
     writeDb(data);
+
+    if (supabase) {
+      try {
+        const { error } = await supabase.from('claims').insert([{
+          id: claim.id,
+          name: claim.name || 'Aviator Player',
+          phone: claim.phone || '',
+          email: claim.email || '',
+          promo_code: claim.promoCode || 'AVIATOR500',
+          bonus_percentage: claim.bonusPercentage || 500,
+          amount: Number(claim.amount || 50000),
+          currency: claim.currency || 'INR',
+          session_token: claim.sessionToken || '',
+          status: claim.status || 'APPROVED',
+          timestamp: claim.timestamp
+        }]);
+        if (error) console.warn('[DB] Supabase insert claim warning:', error.message);
+      } catch (err) {
+        console.warn('[DB] Supabase insert claim error:', err.message);
+      }
+    }
+
     return claim;
   },
 
-  getWinners(limit = 10) {
-    const data = readDb();
-    return data.winners.slice(0, limit);
+  async getWinners(limit = 10) {
+    if (supabase) {
+      try {
+        const { data, error } = await supabase
+          .from('winners')
+          .select('*')
+          .order('id', { ascending: false })
+          .limit(limit);
+
+        if (!error && data && data.length > 0) {
+          return data.map(w => ({
+            id: w.id,
+            name: w.name,
+            avatar: w.avatar || 'star',
+            multiplier: Number(w.multiplier),
+            amount: Number(w.amount),
+            currency: w.currency || 'INR',
+            time: w.time || 'Just now'
+          }));
+        }
+      } catch (err) {
+        console.warn('[DB] Supabase getWinners fallback to local:', err.message);
+      }
+    }
+
+    const localData = readDb();
+    return localData.winners.slice(0, limit);
   },
 
-  addWinner(winner) {
+  async addWinner(winner) {
     const data = readDb();
-    data.winners.unshift({
+    const newWinner = {
       id: Date.now(),
       time: "Just now",
       ...winner
-    });
+    };
+    data.winners.unshift(newWinner);
     if (data.winners.length > 30) {
       data.winners.pop();
     }
     writeDb(data);
+
+    if (supabase) {
+      try {
+        const { error } = await supabase.from('winners').insert([{
+          name: newWinner.name,
+          avatar: newWinner.avatar || 'star',
+          multiplier: Number(newWinner.multiplier),
+          amount: Number(newWinner.amount),
+          currency: newWinner.currency || 'INR',
+          time: newWinner.time || 'Just now'
+        }]);
+        if (error) console.warn('[DB] Supabase addWinner warning:', error.message);
+      } catch (err) {
+        console.warn('[DB] Supabase addWinner error:', err.message);
+      }
+    }
+
     return data.winners;
   },
 
-  getStats() {
-    const data = readDb();
+  async getStats() {
+    const localData = readDb();
+    if (supabase) {
+      try {
+        const { count: claimsCount } = await supabase
+          .from('claims')
+          .select('*', { count: 'exact', head: true });
+
+        const { data: statsRow } = await supabase
+          .from('stats')
+          .select('*')
+          .limit(1)
+          .single();
+
+        if (statsRow) {
+          return {
+            totalFlights: Number(statsRow.total_flights || localData.stats.totalFlights),
+            totalBonusClaimed: Number(statsRow.total_bonus_claimed || localData.stats.totalBonusClaimed),
+            activePlayers: Number(statsRow.active_players || localData.stats.activePlayers) + Math.floor(Math.random() * 15) - 7,
+            totalClaims: claimsCount ?? localData.claims.length
+          };
+        }
+      } catch (err) {
+        console.warn('[DB] Supabase getStats fallback to local:', err.message);
+      }
+    }
+
     return {
-      totalFlights: data.stats.totalFlights,
-      totalBonusClaimed: data.stats.totalBonusClaimed,
-      activePlayers: data.stats.activePlayers + Math.floor(Math.random() * 15) - 7,
-      totalClaims: data.claims.length
+      totalFlights: localData.stats.totalFlights,
+      totalBonusClaimed: localData.stats.totalBonusClaimed,
+      activePlayers: localData.stats.activePlayers + Math.floor(Math.random() * 15) - 7,
+      totalClaims: localData.claims.length
     };
   }
 };
