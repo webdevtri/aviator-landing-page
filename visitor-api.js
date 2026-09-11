@@ -1,6 +1,6 @@
 const express=require('express');
 function cookies(req){return Object.fromEntries((req.headers.cookie||'').split(';').map(v=>v.trim().split('=')).filter(v=>v.length===2));}
-function createVisitorAPI(store,{ephemeral=!!(process.env.VERCEL||process.env.NOW_REGION)}={}){
+function createVisitorAPI(store,{ephemeral=false}={}){
   const router=express.Router();
   router.use((req,res,next)=>/^\/(?:admin|visitor|flight)\//.test(req.path)?next():next('router'));
   const isAdmin=req=>store.isAdmin(cookies(req).k9_admin);
@@ -9,7 +9,8 @@ function createVisitorAPI(store,{ephemeral=!!(process.env.VERCEL||process.env.NO
   router.use((req,res,next)=>{
     res.set('Cache-Control','no-store');
     if(ephemeral)return res.status(503).json({error:'Visitor tracking requires a persistent database host.'});
-    if(req.method!=='GET'&&req.headers.origin&&req.headers.origin!==`${req.protocol}://${req.headers.host}`)return res.status(403).json({error:'Cross-origin requests are not allowed.'});
+    const originHost = (req.headers.origin||'').replace(/^https?:\/\//,'');
+    if(req.method!=='GET'&&req.headers.origin&&originHost!==req.headers.host)return res.status(403).json({error:'Cross-origin requests are not allowed.'});
     req.visitor=store.identity(req.ip,cookies(req).k9_visitor);
     setCookie(res,req,'k9_visitor',req.visitor.visitor,365*86400000);
     req.admin=isAdmin(req);next();

@@ -39,7 +39,7 @@ function decodeImage(dataURL) {
   return { bytes, extension: { 'image/png':'png','image/jpeg':'jpg','image/webp':'webp','image/svg+xml':'svg' }[mime] };
 }
 
-function createCMS({ directory = path.join(__dirname, 'data'), uploadDirectory = path.join(__dirname, 'assets', 'uploads'), ephemeral = !!(process.env.VERCEL || process.env.NOW_REGION), isAuthenticated = () => false } = {}) {
+function createCMS({ directory = path.join(__dirname, 'data'), uploadDirectory = path.join(__dirname, 'assets', 'uploads'), ephemeral = false, isAuthenticated = () => false } = {}) {
   const router = express.Router();
   const file = path.join(directory, 'site-content.json');
   const read = () => fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : { revision:0, updatedAt:null, values:{ ...schema.defaults } };
@@ -49,7 +49,8 @@ function createCMS({ directory = path.join(__dirname, 'data'), uploadDirectory =
   router.get('/access', (req,res) => res.set('Cache-Control','no-store').json({ canEdit:authorized(req), passwordRequired:true, localOnly:false, persistent:!ephemeral }));
   router.use((req,res,next) => {
     if (!authorized(req)) return res.status(401).json({ error:'Log in with your admin username and password.' });
-    if (req.headers.origin && req.headers.origin !== `${req.protocol}://${req.headers.host}`) return res.status(403).json({ error:'Cross-origin editing is not allowed.' });
+    const originHost = (req.headers.origin || '').replace(/^https?:\/\//, '');
+    if (req.headers.origin && originHost !== req.headers.host) return res.status(403).json({ error:'Cross-origin editing is not allowed.' });
     if (ephemeral) return res.status(503).json({ error:'This host has temporary storage. Run the CMS on a persistent Node server, or configure persistent storage before editing.' });
     next();
   });

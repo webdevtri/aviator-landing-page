@@ -10,7 +10,9 @@ const { createCMS } = require('./cms');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-if (process.env.TRUST_PROXY) app.set('trust proxy', process.env.TRUST_PROXY.split(',').map(s=>s.trim()));
+if (process.env.VERCEL || process.env.NOW_REGION || process.env.TRUST_PROXY) {
+  app.set('trust proxy', 1);
+}
 let sqliteDbPath = path.join(__dirname, 'data', 'activity.sqlite');
 if (process.env.VERCEL) {
   const tmpDb = path.join('/tmp', 'activity.sqlite');
