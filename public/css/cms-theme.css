@@ -1,0 +1,29 @@
+/* Editable theme values, initialized from the CMS before the page starts. */
+:root { --k9-accent:var(--cms-accent,#225ef8); --k9-ink:var(--cms-ink,#0e0f13); --k9-surface:var(--cms-surface,#fff); --k9-muted:var(--cms-muted,#606575); }
+body,.app-container { color:var(--cms-ink); background:var(--cms-background); }
+.game-viewport { background:var(--cms-game); }
+.top-nav,.history-bar-container,.bottom-dock,.game-viewport,.policy-dialog,.flight-toast { border-color:var(--cms-border); }
+.history-bar-container,.stepper-row { background:var(--cms-background); }
+.bottom-dock,.bonus-modal-card,.help-card,.policy-dialog,.flight-toast { background:var(--cms-surface); }
+.live-winners-panel { background:color-mix(in srgb,var(--cms-surface) 85%,transparent); }
+h1,.balance-card .balance-amount,.pool-total-value,.bonus-congrats-title,.flight-toast strong,.help-header h3,.policy-dialog h2 { color:var(--cms-ink); }
+.takeoff-subtitle,.bonus-credits-sub,.legal-footer,.legal-footer nav button,.legal-footer nav .contact-email,.policy-body,.flight-toast span,.help-step p { color:var(--cms-muted); }
+.takeoff-title em { color:var(--cms-accent); background:none; -webkit-text-fill-color:var(--cms-accent); }
+.bet-action-btn.state-start,.bet-action-btn.state-start:hover { background:var(--cms-accent); border-color:var(--cms-accent); }
+#bonusModal .claim-cta-btn { background:var(--cms-signup); color:var(--cms-signupText); }
+.welcome-bonus,.history-pill.medium { color:var(--cms-accent); }
+.flight-toast { border-left-color:var(--cms-accent); }
+.flew-away-label,.multiplier-display.flew-away { color:var(--cms-flight); }
+.multiplier-display.purple-tier { color:var(--cms-purple); }
+.multiplier-display.gold-tier,.multiplier-display.won { color:var(--cms-gold); }
+.bet-action-btn.state-cashout { background:var(--cms-gold); border-color:var(--cms-gold); }
+.winner-avatar img { width:100%; height:100%; object-fit:cover; border-radius:inherit; }
+/* Device navigation bars, notches, browser chrome, and keyboard-safe viewport. */
+:root{--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px);--extra-top:0px;--extra-bottom:0px;--extra-side:0px}
+:root[data-safe-area=false]{--safe-top:0px;--safe-bottom:0px;--safe-left:0px;--safe-right:0px}
+.app-container{height:var(--visible-height,100dvh);box-sizing:border-box;padding-top:calc(var(--safe-top) + var(--extra-top));padding-bottom:calc(var(--safe-bottom) + var(--extra-bottom));padding-left:max(clamp(18px,3.5vw,64px),calc(var(--safe-left) + var(--extra-side)));padding-right:max(clamp(18px,3.5vw,64px),calc(var(--safe-right) + var(--extra-side)))}
+.modal-overlay{height:var(--visible-height,100dvh);bottom:auto;padding-top:calc(16px + var(--safe-top) + var(--extra-top));padding-bottom:calc(16px + var(--safe-bottom) + var(--extra-bottom));padding-left:calc(16px + var(--safe-left));padding-right:calc(16px + var(--safe-right))}
+.policy-dialog{max-height:calc(var(--visible-height,100dvh) - var(--safe-top) - var(--safe-bottom) - var(--extra-top) - var(--extra-bottom) - 28px)}
+:root[data-compact=true] .top-nav{flex-basis:44px}:root[data-compact=true] .pilot-character{height:85px}:root[data-compact=true] .promo-copy{padding:0}:root[data-compact=true] .takeoff-title .pilot-greeting{font-size:20px}:root[data-compact=true] .takeoff-title em{font-size:27px;margin-top:4px}:root[data-compact=true] .takeoff-subtitle{font-size:9px;margin-top:4px}:root[data-compact=true] .legal-footer{min-height:48px;padding-block:4px}:root[data-compact=true] .bottom-dock{padding:7px}:root[data-compact=true] .bet-action-btn{height:54px}
+
+.bet-action-btn.state-claim{background:linear-gradient(135deg,#ffe594,var(--cms-gold,#ffc700) 55%,#e2a800);border-color:#e2ac20;color:#352400;box-shadow:0 4px 16px #dca90035}.bet-action-btn.state-claim:hover{filter:brightness(1.06)}.bet-action-btn.state-claim .btn-text{color:#352400;text-shadow:none}

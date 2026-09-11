@@ -34,7 +34,10 @@ const cmsAPI = createCMS({ isAuthenticated: visitorAPI.isAdmin });
 app.use(['/api/cms', '/cms'], cmsAPI);
 app.use(['/api', '/'], visitorAPI.router);
 const settleTimer=setInterval(()=>activityStore.settle(),250);settleTimer.unref();
-app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
+app.get('/admin', (req, res) => {
+  const p = path.join(__dirname, 'public', 'admin.html');
+  res.sendFile(fs.existsSync(p) ? p : path.join(__dirname, 'admin.html'));
+});
 
 // Middleware
 app.use(cors());
@@ -42,7 +45,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
-for (const folder of ['assets','css','js']) app.use('/'+folder, express.static(path.join(__dirname,folder),{setHeaders:res=>res.set('X-Content-Type-Options','nosniff')}));
+for (const folder of ['assets','css','js']) {
+  const p = path.join(__dirname, 'public', folder);
+  const target = fs.existsSync(p) ? p : path.join(__dirname, folder);
+  app.use('/'+folder, express.static(target, {setHeaders:res=>res.set('X-Content-Type-Options','nosniff')}));
+}
 app.use(['/data','/node_modules','/.git'],(req,res)=>res.sendStatus(404));
 
 // Initialize database
@@ -114,7 +121,8 @@ app.get(['/api/stats', '/stats'], (req, res) => {
 
 // Fallback to index.html for root routing
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  const p = path.join(__dirname, 'public', 'index.html');
+  res.sendFile(fs.existsSync(p) ? p : path.join(__dirname, 'index.html'));
 });
 
 // Start Server
