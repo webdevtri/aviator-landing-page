@@ -30,8 +30,9 @@ const activityStore = new ActivityStore(sqliteDbPath, Date.now, () => {
   return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')).values : {};
 });
 const visitorAPI = createVisitorAPI(activityStore);
-app.use('/api', visitorAPI.router);
-app.use('/api/cms', createCMS({ isAuthenticated: visitorAPI.isAdmin }));
+const cmsAPI = createCMS({ isAuthenticated: visitorAPI.isAdmin });
+app.use(['/api/cms', '/cms'], cmsAPI);
+app.use(['/api', '/'], visitorAPI.router);
 const settleTimer=setInterval(()=>activityStore.settle(),250);settleTimer.unref();
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
 
@@ -50,12 +51,12 @@ db.init();
 // --- API Endpoints ---
 
 // Health Check
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/health'], (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString() });
 });
 
 // App Config & Meta
-app.get('/api/config', (req, res) => {
+app.get(['/api/config', '/config'], (req, res) => {
   res.json({
     appName: 'Aviator Pro Landing Page',
     promoCode: 'AVIATOR500',
@@ -67,7 +68,7 @@ app.get('/api/config', (req, res) => {
 });
 
 // Claim 500% Welcome Bonus
-app.post('/api/bonus/claim', (req, res) => {
+app.post(['/api/bonus/claim', '/bonus/claim'], (req, res) => {
   const {
     name = 'Aviator Winner',
     phone = '',
@@ -99,14 +100,14 @@ app.post('/api/bonus/claim', (req, res) => {
 });
 
 // Live Winners Feed
-app.get('/api/winners', (req, res) => {
+app.get(['/api/winners', '/winners'], (req, res) => {
   const limit = parseInt(req.query.limit) || 10;
   const winners = db.getWinners(limit);
   res.json({ success: true, winners });
 });
 
 // Platform Stats
-app.get('/api/stats', (req, res) => {
+app.get(['/api/stats', '/stats'], (req, res) => {
   const stats = db.getStats();
   res.json({ success: true, stats });
 });
