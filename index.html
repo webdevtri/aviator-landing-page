@@ -10,17 +10,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="assets/kixo9-favicon.webp" type="image/webp">
+  <link rel="icon" href="/assets/kixo9-favicon.webp" type="image/webp">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/kixo9.css">
-  <link rel="stylesheet" href="css/cms-theme.css">
-  <script src="js/cms-schema.js"></script>
-  <script src="/api/cms/bootstrap.js"></script>
-  <script src="js/gtm-config.js"></script>
-  <script src="js/tracking.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/kixo9.css">
+  <link rel="stylesheet" href="/css/cms-theme.css">
+  <script src="/js/cms-schema.js"></script>
+  <script src="/api/cms/bootstrap.js" defer></script>
+  <script src="/js/gtm-config.js"></script>
+  <script src="/js/tracking.js"></script>
 </head>
 <body>
   <div class="app-container">
@@ -28,9 +28,9 @@
     <!-- Top Navigation Bar -->
     <header class="top-nav">
       <div class="logo-section">
-        <a href="./" class="k9-wordmark" aria-label="KIXO9 home"><img src="assets/kixo9-logo.webp" alt="KIXO9"></a>
+        <a href="/" class="k9-wordmark" aria-label="KIXO9 home"><img src="/assets/kixo9-logo.webp" alt="KIXO9" width="140" height="36"></a>
         <span class="brand-divider" aria-hidden="true"></span>
-        <img src="assets/aviator-logo.svg" alt="Aviator Logo" class="brand-logo" onerror="this.onerror=null; this.src='aviator-logo';">
+        <img src="/assets/aviator-logo.svg" alt="Aviator Logo" class="brand-logo" width="120" height="26">
       </div>
 
       <div class="top-right-actions">
@@ -65,149 +65,173 @@
     </header>
 
     <div class="experience">
-    <div class="promo-copy">
-      <div class="pilot-copy-text">
-      <h1 class="takeoff-title"><span class="pilot-greeting">Ahoy, Pilot! 👀</span><em>READY FOR TAKEOFF? <span class="takeoff-emoji">🚀</span></em></h1>
-      <p class="takeoff-subtitle">Make your choice, and take off!</p>
-      </div>
-      <div class="pilot-character"><img class="pilot-character-image" src="assets/raccoon-thumbs-up.png" alt="Raccoon pilot in a blue flight jacket giving a thumbs up for takeoff" width="1122" height="1402" decoding="async"></div>
-    </div>
-    <div class="flight-experience">
-    <!-- Multipliers History Bar -->
-    <div class="history-bar-container" id="historyBar">
-      <span class="history-pill high">8.14x</span>
-      <span class="history-pill low">1.19x</span>
-      <span class="history-pill medium">2.05x</span>
-      <span class="history-pill low">1.00x</span>
-      <span class="history-pill high">6.10x</span>
-      <span class="history-pill medium">4.74x</span>
-      <span class="history-pill low">1.10x</span>
-      <span class="history-more">•••</span>
-    </div>
-
-    <!-- Main Game Viewport -->
-    <main class="game-viewport">
-      <!-- 60FPS Flight Canvas -->
-      <canvas id="flightCanvas" role="img" aria-label="Cartoon raccoon piloting a red plane with a spinning propeller"></canvas>
-
-      <div id="flightToast" class="flight-toast" role="status" aria-live="polite" aria-atomic="true" hidden><strong id="flightToastTitle"></strong><span id="flightToastBody"></span></div>
-
-      <!-- Center Multiplier Display HUD -->
-      <div class="center-hud">
-        <div id="flewAwayLabel" class="flew-away-label">FLEW AWAY!</div>
-        <div id="multiplierDisplay" class="multiplier-display">
-          <span id="multiplierValue">1.00x</span>
+      <div class="promo-copy">
+        <div class="pilot-copy-text">
+          <h1 class="takeoff-title"><span class="pilot-greeting">Ahoy, Pilot! 👀</span><em>READY FOR TAKEOFF? <span class="takeoff-emoji">🚀</span></em></h1>
+          <p class="takeoff-subtitle">Make your choice, and take off!</p>
         </div>
+        <div class="pilot-character"><img class="pilot-character-image" src="/assets/raccoon-thumbs-up.png" alt="Raccoon pilot in a blue flight jacket giving a thumbs up for takeoff" width="1122" height="1402" decoding="async"></div>
       </div>
-
-      <!-- Mega Win Celebration Banner -->
-      <div id="winBanner" class="win-banner">
-        <div class="win-title">DEMO CASH OUT</div>
-        <div id="winAmountText" class="win-amount-text">WON ₹50,000!</div>
-      </div>
-
-      <!-- Live Winners Panel (Top Right Floating) -->
-      <aside class="live-winners-panel">
-        <div class="live-pool-header">
-          <div class="pool-indicator">
-            <div class="live-dot"></div>
-            <svg class="download-arrow" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
-            </svg>
-            <span id="livePoolCounter" class="pool-total-value">₹4,13,04,886</span>
-          </div>
+      <div class="flight-experience">
+        <!-- Multipliers History Bar -->
+        <div class="history-bar-container" id="historyBar">
+          <span class="history-pill high">8.14x</span>
+          <span class="history-pill low">1.19x</span>
+          <span class="history-pill medium">2.05x</span>
+          <span class="history-pill low">1.00x</span>
+          <span class="history-pill high">6.10x</span>
+          <span class="history-pill medium">4.74x</span>
+          <span class="history-pill low">1.10x</span>
+          <span class="history-more">•••</span>
         </div>
-        <div id="liveWinnersFeed" class="winners-feed">
-          <!-- Dynamically populated rows -->
-        </div>
-      </aside>
 
-      <!-- Active Players Count Badge (Bottom Right) -->
-      <div class="active-players-badge">
-        <div class="avatar-stack">
-          <img class="mini-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2334b4ff'><circle cx='12' cy='12' r='10'/></svg>" alt="avatar">
-          <img class="mini-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23913ef8'><circle cx='12' cy='12' r='10'/></svg>" alt="avatar">
-          <img class="mini-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e50539'><circle cx='12' cy='12' r='10'/></svg>" alt="avatar">
-        </div>
-        <span id="activePlayersCount">194</span><span>players online</span>
-      </div>
-    </main>
+        <!-- Main Game Viewport -->
+        <main class="game-viewport">
+          <!-- 60FPS Flight Canvas -->
+          <canvas id="flightCanvas" role="img" aria-label="Cartoon raccoon piloting a red plane with a spinning propeller"></canvas>
 
-    <!-- Bottom Betting Control Dock -->
-    <div class="bottom-dock">
-      <div class="bet-control-panel">
-        <div class="stepper-and-chips">
-          <!-- Stepper Input -->
-          <div class="stepper-row" id="stepperRow">
-            <button id="btnMinus" class="stepper-btn" aria-label="Decrease Bet">−</button>
-            <div class="bet-input-box">
-              <input type="number" id="betAmountInput" value="100" min="1" step="1" aria-label="Virtual stake amount">
+          <div id="flightToast" class="flight-toast" role="status" aria-live="polite" aria-atomic="true" hidden><strong id="flightToastTitle"></strong><span id="flightToastBody"></span></div>
+
+          <!-- Center Multiplier Display HUD -->
+          <div class="center-hud">
+            <div id="flewAwayLabel" class="flew-away-label">FLEW AWAY!</div>
+            <div id="multiplierDisplay" class="multiplier-display">
+              <span id="multiplierValue">1.00x</span>
             </div>
-            <button id="btnPlus" class="stepper-btn" aria-label="Increase Bet">+</button>
           </div>
-          <!-- Quick Bet Chips -->
-          <div class="quick-chips-row">
-            <button class="quick-chip active" data-val="100">₹100</button>
-            <button class="quick-chip" data-val="200">₹200</button>
-            <button class="quick-chip" data-val="500">₹500</button>
-            <button class="quick-chip" data-val="1000">₹1,000</button>
+
+          <!-- Mega Win Celebration Banner -->
+          <div id="winBanner" class="win-banner">
+            <div class="win-title">DEMO CASH OUT</div>
+            <div id="winAmountText" class="win-amount-text">WON ₹50,000!</div>
+          </div>
+
+          <!-- Live Winners Panel (Top Right Floating) -->
+          <aside class="live-winners-panel">
+            <div class="live-pool-header">
+              <div class="pool-indicator">
+                <div class="live-dot"></div>
+                <svg class="download-arrow" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                </svg>
+                <span id="livePoolCounter" class="pool-total-value">₹4,13,04,886</span>
+              </div>
+            </div>
+            <div id="liveWinnersFeed" class="winners-feed">
+              <!-- Dynamically populated rows -->
+            </div>
+          </aside>
+
+          <!-- Active Players Count Badge (Bottom Right) -->
+          <div class="active-players-badge">
+            <div class="avatar-stack">
+              <img class="mini-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2334b4ff'><circle cx='12' cy='12' r='10'/></svg>" alt="avatar">
+              <img class="mini-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23913ef8'><circle cx='12' cy='12' r='10'/></svg>" alt="avatar">
+              <img class="mini-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e50539'><circle cx='12' cy='12' r='10'/></svg>" alt="avatar">
+            </div>
+            <span id="activePlayersCount">194</span><span>players online</span>
+          </div>
+        </main>
+
+        <!-- Bottom Betting Control Dock -->
+        <div class="bottom-dock">
+          <div class="bet-control-panel">
+            <div class="stepper-and-chips">
+              <!-- Stepper Input -->
+              <div class="stepper-row" id="stepperRow">
+                <button id="btnMinus" class="stepper-btn" aria-label="Decrease Bet">−</button>
+                <div class="bet-input-box">
+                  <input type="number" id="betAmountInput" value="100" min="1" step="1" aria-label="Virtual stake amount">
+                </div>
+                <button id="btnPlus" class="stepper-btn" aria-label="Increase Bet">+</button>
+              </div>
+              <!-- Quick Bet Chips -->
+              <div class="quick-chips-row">
+                <button class="quick-chip active" data-val="100">₹100</button>
+                <button class="quick-chip" data-val="200">₹200</button>
+                <button class="quick-chip" data-val="500">₹500</button>
+                <button class="quick-chip" data-val="1000">₹1,000</button>
+              </div>
+            </div>
+
+            <!-- Primary Action / State Button -->
+            <button id="mainBetBtn" class="bet-action-btn state-start" aria-label="Take Off">
+              <div id="betBtnProgressBar" class="btn-progress-bar"></div>
+              <span id="betBtnIcon" class="btn-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M2.5 19h19v2h-19zm19.57-9.36c-.21-.8-1.04-1.28-1.84-1.06L14.92 10l-6.9-6.4-1.93.51 4.14 7.17-4.97 1.33-1.97-1.54-1.45.39 1.82 3.16L21 11.47c.81-.21 1.28-1.03 1.07-1.83z"/>
+                </svg>
+              </span>
+              <div class="btn-labels">
+                <span id="betBtnText" class="btn-main-text">Take Off</span>
+                <span id="betBtnSub" class="btn-sub-text">NEXT ROUND</span>
+              </div>
+            </button>
           </div>
         </div>
-
-        <!-- Primary Action / State Button -->
-        <button id="mainBetBtn" class="bet-action-btn state-start" aria-label="Take Off">
-          <div id="betBtnProgressBar" class="btn-progress-bar"></div>
-          <span id="betBtnIcon" class="btn-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
-          </span>
-          <span id="betBtnText" class="btn-text">Take Off</span>
-          <span id="betBtnSub" class="btn-sub">· ₹100</span>
-        </button>
       </div>
     </div>
-    </div>
-    </div>
+
+    <!-- Responsive Legal Footer -->
     <footer class="legal-footer">
-      <div class="legal-summary"><span class="age-badge">18+</span><span>Adults only. Play responsibly. <span class="footer-detail">Virtual credits have no cash value.</span></span></div>
-      <nav aria-label="Legal information">
-        <button data-policy="privacy">Privacy</button><button data-policy="terms">Terms</button><button data-policy="responsible">Responsible play</button><button data-policy="cookies">Cookies</button><a class="contact-email" href="mailto:contact@kixo9.com">contact@kixo9.com</a>
-      </nav>
+      <div class="legal-badge">18+</div>
+      <div class="legal-disclaimer">
+        <span>Adults only. Play responsibly.</span>
+        <span>Virtual credits have no cash value.</span>
+      </div>
+      <div class="legal-links">
+        <button class="policy-link" data-policy="privacy">Privacy</button>
+        <button class="policy-link" data-policy="terms">Terms</button>
+        <button class="policy-link" data-policy="responsible">Responsible play</button>
+        <button class="policy-link" data-policy="cookies">Cookies</button>
+        <a id="contactEmailLink" href="mailto:contact@kixo9.com" class="footer-email">contact@kixo9.com</a>
+      </div>
     </footer>
 
-    <dialog id="policyDialog" class="policy-dialog" aria-labelledby="policyTitle">
-      <div class="policy-topline"><span>KIXO9 / INFORMATION</span><button id="closePolicyBtn" aria-label="Close information">×</button></div>
-      <h2 id="policyTitle"></h2>
-      <div id="policyBody" class="policy-body"></div>
-      <div id="policyPagination" class="policy-pagination" hidden><button id="policyPrevBtn" aria-label="Previous policy page">←</button><span id="policyPageCount" aria-live="polite"></span><button id="policyNextBtn" aria-label="Next policy page">→</button></div>
-      <div class="policy-bottom"><span>18+ · Play responsibly</span><button id="policyDoneBtn">Got it <span aria-hidden="true">↗</span></button></div>
-    </dialog>
-
-    <!-- Claiming Dialogue Box -->
-    <div id="bonusModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="congratsTitle">
-      <div class="bonus-modal-card">
-        <!-- Close Cross Icon Button -->
-        <button id="closeBonusBtn" class="close-bonus-btn" aria-label="Close Bonus Modal" title="Close">&times;</button>
-
-        <h2 id="congratsTitle" class="bonus-congrats-title">YOU COOKED. 🔥</h2>
-        <div id="congratsCredits" class="bonus-credits-sub">Pilot, you’re in. 🫡</div>
-        <p class="welcome-bonus">🎁 500% WELCOME BONUS</p>
-        <button id="bonusClaimBtn" class="claim-cta-btn">YOURS. CLAIM IT</button>
-        <div class="bonus-timer-bar">18+ · Offer terms apply · Virtual winnings have no cash value</div>
+    <!-- 500% Welcome Bonus Modal Dialog -->
+    <div id="bonusModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="bonusTitle">
+      <div class="modal-backdrop"></div>
+      <div class="bonus-card">
+        <button id="closeBonusBtn" class="modal-close-btn" aria-label="Close Bonus Modal">&times;</button>
+        <div class="bonus-icon-glow">
+          <div class="sparkle-ring"></div>
+          <span class="bonus-emoji">🎁</span>
+        </div>
+        <div class="bonus-badges">
+          <span class="bonus-pill">DEMO VICTORY</span>
+          <span class="multiplier-pill" id="wonMultiplierBadge">2.00x</span>
+        </div>
+        <h2 id="bonusTitle" class="bonus-title">YOU COOKED. 🔥</h2>
+        <p class="bonus-subtitle">Pilot, you’re in. 🫡</p>
+        <div class="reward-box">
+          <div class="reward-label">EXCLUSIVE PILOT OFFER</div>
+          <div class="reward-val">🎁 500% WELCOME BONUS</div>
+          <div class="promo-code-container">
+            <span class="promo-code-tag">CODE:</span>
+            <span class="promo-code-val">AVIATOR500</span>
+          </div>
+        </div>
+        <a id="claimOfferBtn" href="https://www.kixo9.com/signup" target="_blank" rel="noopener noreferrer" class="claim-bonus-btn">
+          <span>YOURS. CLAIM IT</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="arrow-right-icon">
+            <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"/>
+          </svg>
+        </a>
+        <p class="bonus-terms-note">18+ · Offer terms apply · Virtual winnings have no cash value</p>
       </div>
     </div>
 
-    <!-- Help / Rules Modal -->
-    <div id="helpModal" class="modal-overlay">
+    <!-- Help & Tour Modal Dialog -->
+    <div id="helpModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <div class="modal-backdrop"></div>
       <div class="help-card">
+        <button id="closeHelpBtn" class="modal-close-btn" aria-label="Close Help">&times;</button>
         <div class="help-header">
-          <h3>How to Play Aviator</h3>
-          <button id="closeHelpBtn" class="close-btn">&times;</button>
+          <span class="help-emoji">✈️</span>
+          <h3 id="helpTitle">How to Play Aviator</h3>
         </div>
         <div class="help-content">
           <div class="help-step">
-            <span class="step-num">1</span>
-            <div>
-              <strong>Set your stake</strong>
               <p>Use the − / + buttons or quick chips (₹100, ₹200...) to choose your bet amount for the round.</p>
             </div>
           </div>
@@ -287,15 +311,15 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/cms-client.js"></script>
-  <script src="js/audio.js"></script>
-  <script src="js/canvas.js"></script>
-  <script src="js/winners.js"></script>
-  <script src="js/flight-rules.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/tour.js"></script>
-  <script src="js/flight-messages.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/kixo9.js"></script>
+  <script src="/js/cms-client.js"></script>
+  <script src="/js/audio.js"></script>
+  <script src="/js/canvas.js"></script>
+  <script src="/js/winners.js"></script>
+  <script src="/js/flight-rules.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/tour.js"></script>
+  <script src="/js/flight-messages.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/kixo9.js"></script>
 </body>
 </html>

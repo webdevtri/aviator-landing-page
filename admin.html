@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KIXO9 · Content studio</title><link rel="icon" href="assets/kixo9-favicon.webp"><link rel="stylesheet" href="css/admin.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KIXO9 · Content studio</title><link rel="icon" href="/assets/kixo9-favicon.webp"><link rel="stylesheet" href="/css/admin.css"></head>
 <body>
-  <header class="studio-header"><a class="studio-brand" href="/admin"><img src="assets/kixo9-logo.webp" alt="KIXO9"><span>CONTENT STUDIO</span></a><div class="save-area"><span id="saveState">Loading content…</span><a href="/" target="_blank" rel="noopener">Open site ↗</a><button id="saveBtn" class="primary" disabled>Save changes</button></div></header>
+  <header class="studio-header"><a class="studio-brand" href="/admin"><img src="/assets/kixo9-logo.webp" alt="KIXO9"><span>CONTENT STUDIO</span></a><div class="save-area"><span id="saveState">Loading content…</span><a href="/" target="_blank" rel="noopener">Open site ↗</a><button id="saveBtn" class="primary" disabled>Save changes</button></div></header>
   <div id="notice" role="status" aria-live="polite" hidden></div>
   <section id="loginPanel" hidden><h1>Admin login</h1><p id="loginDescription">Sign in to edit content and replay flights without limits.</p><form id="loginForm"><label>Username<input id="username" autocomplete="username" required maxlength="40"></label><label>Password<input id="password" type="password" autocomplete="current-password" required></label><button class="primary">Log in</button></form></section>
   <main class="studio-layout" hidden>
@@ -12,5 +12,5 @@
   </main>
   <dialog id="activityDialog"><header><div><h2>Visitor activity</h2><p>Latest 150 events · refreshes every 3 seconds</p></div><button id="closeActivity" aria-label="Close activity log">×</button></header><p id="activityStatus" role="status"></p><div class="activity-table-wrap"><table><thead><tr><th>Time</th><th>Visitor</th><th>Activity</th><th>Details</th></tr></thead><tbody id="activityRows"></tbody></table></div></dialog>
   <dialog id="accountDialog" aria-labelledby="accountTitle"><header><h2 id="accountTitle">Change password</h2><button id="closeAccount" aria-label="Close account settings">×</button></header><p id="accountDescription"></p><form id="accountForm"><label id="newUsernameLabel" hidden>New admin username<input id="newUsername" autocomplete="off" minlength="3" maxlength="40" pattern="[a-zA-Z0-9_.-]+"></label><label id="currentPasswordLabel">Current password<input id="currentPassword" type="password" autocomplete="current-password"></label><label>New password<input id="newPassword" type="password" autocomplete="new-password" minlength="12" maxlength="256" required></label><label>Confirm new password<input id="confirmPassword" type="password" autocomplete="new-password" minlength="12" maxlength="256" required></label><p id="accountStatus" role="status"></p><button id="accountSubmit" class="primary">Change password</button></form></dialog>
-  <script src="js/cms-schema.js"></script><script src="js/admin.js"></script>
+  <script src="/js/cms-schema.js"></script><script src="/js/admin.js"></script>
 </body></html>
